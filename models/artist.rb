@@ -28,5 +28,21 @@ class Artist
         return array_of_artist_objects
     end
 
-    
+    def albums()
+        sql = "SELECT * FROM albums WHERE id = $1"
+        values = [@id]
+        matching_albums = SqlRunner.run(sql, values)
+        array_of_album_objects = matching_albums.map { |album| Album.new(album) }
+        return array_of_album_objects
+    end
+
+    def self.find_by_id(id)
+        sql = "SELECT * FROM artists WHERE id = $1;"
+        values = [id]
+        result = SqlRunner.run(sql, values)[0]
+        return nil if result == nil
+        artist = Artist.new(result)
+        return artist
+    end
+
 end

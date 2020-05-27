@@ -53,6 +53,15 @@ artists = Artist.all()
 
 albums = Album.all()
 
+katy_albums = katy.albums()
+
+taylor_albums = taylor.albums()
+
+witness_artists = witness.artist() 
+
+fearless_artists = fearless.artist() 
+
+katy = Artist.find_by_id(1) 
 
 binding.pry 
 
