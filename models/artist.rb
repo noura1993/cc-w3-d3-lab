@@ -1,3 +1,6 @@
+require_relative('../db/sql_runner')
+require_relative('./album')
+
 class Artist
 
     attr_reader :id, :name
@@ -7,4 +10,23 @@ class Artist
         @name = options['name']
     end
 
+    def save()
+        sql = "INSERT INTO artists (
+                name
+            ) VALUES (
+                $1
+            ) RETURNING id;"
+        values = [@name]
+        artist_id = SqlRunner.run(sql, values)[0]['id'].to_i
+        @id = artist_id
+    end
+
+    def self.all()
+        sql = "SELECT * FROM artists"
+        all_artists = SqlRunner.run(sql)
+        array_of_artist_objects = all_artists.map { |artist| Artist.new(artist) }
+        return array_of_artist_objects
+    end
+
+    
 end

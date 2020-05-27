@@ -1,6 +1,6 @@
 require('pry')
-require_relative('../models/artist')
-require_relative('../models/album')
+require_relative('./models/artist')
+require_relative('./models/album')
 
 # Album.delete_all
 # Artist.delete_all
@@ -9,13 +9,13 @@ katy = Artist.new({
     'name' => 'Katty Perry'
 })
 
-# katy.save()
+katy.save()
 
 taylor = Artist.new({
     'name' => 'Taylor Swift'
 })
 
-# taylor.save()
+taylor.save()
 
 prism = Album.new({
     'title' => 'Prism',
@@ -23,7 +23,7 @@ prism = Album.new({
     'artist_id' => katy.id
 })
 
-# prism.save()
+prism.save()
 
 witness = Album.new({
     'title' => 'witness',
@@ -31,7 +31,7 @@ witness = Album.new({
     'artist_id' => katy.id
 })
 
-# witness.save()
+witness.save()
 
 fearless = Album.new({
     'title' => 'Fearless',
@@ -39,7 +39,7 @@ fearless = Album.new({
     'artist_id' => taylor.id
 })
 
-# fearless.save()
+fearless.save()
 
 lover = Album.new({
     'title' => 'Lover',
@@ -47,4 +47,13 @@ lover = Album.new({
     'artist_id' => taylor.id
 })
 
-# lover.save()
+lover.save()
+
+artists = Artist.all()
+
+albums = Album.all()
+
+
+binding.pry 
+
+nil
